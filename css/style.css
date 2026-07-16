@@ -94,7 +94,17 @@
     font-size: 15px;
     font-weight: 500;
     text-transform: uppercase;
-    outline: none;
+}
+
+/* Visible keyboard focus for interactive elements */
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.nav-link:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
@@ -670,7 +680,7 @@
     bottom: 0;
     width: 100%;
     z-index: 1031;
-    padding: 14px 0;
+    padding: 14px 0 calc(14px + env(safe-area-inset-bottom, 0px));
     background: var(--primary);
     color: #FFFFFF !important;
     text-align: center;
@@ -688,11 +698,11 @@
 
 @media (max-width: 991.98px) {
     body {
-        padding-bottom: 54px;
+        padding-bottom: calc(54px + env(safe-area-inset-bottom, 0px));
     }
 
     .back-to-top {
         right: 20px;
-        bottom: 70px;
+        bottom: calc(70px + env(safe-area-inset-bottom, 0px));
     }
 }
