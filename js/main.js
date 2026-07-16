@@ -1,6 +1,9 @@
 (function ($) {
     "use strict";
 
+    // Respect users who prefer reduced motion
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     // Spinner
     var spinner = function () {
         setTimeout(function () {
@@ -35,7 +38,7 @@
         }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, reduceMotion ? 0 : 1500, 'easeInOutExpo');
         return false;
     });
 
@@ -64,7 +67,7 @@
 
     // Testimonials carousel
     $(".testimonial-carousel").owlCarousel({
-        autoplay: true,
+        autoplay: !reduceMotion,
         smartSpeed: 1000,
         center: true,
         dots: false,

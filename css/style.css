@@ -44,7 +44,7 @@
 /*** Button ***/
 .btn {
     font-weight: 500;
-    transition: .5s;
+    transition: color .5s, background-color .5s, border-color .5s;
 }
 
 .btn.btn-primary,
@@ -135,7 +135,7 @@ button:focus-visible,
 
 .navbar-light.sticky-top {
     top: -100px;
-    transition: .5s;
+    transition: top .5s;
 }
 
 @media (min-width: 992px) {
@@ -206,7 +206,7 @@ button:focus-visible,
     background: transparent;
     border: 1px solid #FFFFFF;
     font-size: 22px;
-    transition: .5s;
+    transition: background-color .5s, border-color .5s;
 }
 
 .header-carousel .owl-nav .owl-prev:hover,
@@ -234,7 +234,7 @@ button:focus-visible,
     height: 15px;
     background: transparent;
     border: 1px solid #FFFFFF;
-    transition: .5s;
+    transition: background-color .5s, border-color .5s;
 }
 
 .header-carousel .owl-dot::after {
@@ -323,7 +323,7 @@ button:focus-visible,
 
 /*** Service ***/
 .service-item img {
-    transition: .5s;
+    transition: transform .5s;
 }
 
 .service-item:hover img {
@@ -507,7 +507,7 @@ button:focus-visible,
 .testimonial-carousel .owl-item .testimonial-text {
     border: 5px solid var(--light);
     transform: scale(.8);
-    transition: .5s;
+    transition: transform .5s;
 }
 
 .testimonial-carousel .owl-item.center .testimonial-text {
@@ -523,7 +523,7 @@ button:focus-visible,
     display: flex;
     justify-content: space-between;
     opacity: 0;
-    transition: .5s;
+    transition: opacity .5s, width .5s;
     z-index: 1;
 }
 
@@ -537,7 +537,7 @@ button:focus-visible,
     position: relative;
     color: var(--primary);
     font-size: 45px;
-    transition: .5s;
+    transition: color .5s;
 }
 
 .testimonial-carousel .owl-nav .owl-prev:hover,
@@ -585,7 +585,7 @@ button:focus-visible,
     justify-content: center;
     color: var(--light);
     border: 1px solid #FFFFFF;
-    transition: .3s;
+    transition: color .3s;
 }
 
 .footer .btn.btn-social:hover {
@@ -705,4 +705,36 @@ button:focus-visible,
         right: 20px;
         bottom: calc(70px + env(safe-area-inset-bottom, 0px));
     }
+}
+
+
+/*** Reduced motion ***/
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/*** Misc polish ***/
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+
+a,
+button,
+.btn {
+    touch-action: manipulation;
+}
+
+/* Keep native select readable in OS dark mode */
+.form-select {
+    background-color: #FFFFFF;
+    color: var(--dark);
 }
